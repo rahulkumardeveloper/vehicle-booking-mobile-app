@@ -1,0 +1,29 @@
+<app-map></app-map>
+<ion-modal #modal trigger="open-modal" [isOpen]="true" [initialBreakpoint]="0.35" [breakpoints]="[0.35]"
+  [backdropDismiss]="false" [backdropBreakpoint]="0.5">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start" size="large" (click)="goBack()">
+          <ion-icon class="ion-backbtn" name="arrow-back-circle-outline"></ion-icon>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content [fullscreen]="true" scrollY="false">
+      <ion-list>
+        <ion-item *ngFor="let vehicle of vehicleType" (click)="vehicleSelection(vehicle)" button class="mb-2"
+          [ngClass]="{'active': vehicle.type === selectedVehicleType}">
+          <img [alt]="vehicle.vehicleName" [src]="vehicle.img" width="40px" />
+          <ion-label class="pl-4"> {{vehicle.vehicleName}}</ion-label>
+          <ion-label class="pl-4" slot="end">{{ 200 | currency: 'INR' }}</ion-label>
+        </ion-item>
+
+      </ion-list>
+      <ion-button expand="block" (click)="onBookRide()" [disabled]="selectedVehicleType==null">Book
+        {{selectedVehicleType}}</ion-button>
+    </ion-content>
+    <ion-footer>
+
+    </ion-footer>
+  </ng-template>
+</ion-modal>

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="dismiss()">
+      <ion-icon class="ion-backbtn" name="arrow-back-circle-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title>{{inputFocusField}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-content">
+    <!-- <ion-list class="locationform" no-lines>
+      <ion-item class="mb-2">
+        <ion-icon name="location-outline" class="pick-icon"></ion-icon>
+        <ion-searchbar fill="outline" placeholder="pickup location" [(ngModel)]="pickupLocation"
+          (input)="filteredLocations($event)" (ionFocus)="onFocus('Pickup location')" #pickupInput></ion-searchbar>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="location-outline" class="drop-icon"></ion-icon>
+        <ion-searchbar fill="outline" placeholder="drop location" [(ngModel)]="dropLocation"
+          (input)="filteredLocations($event)" (ionFocus)="onFocus('Drop location')" #dropInput></ion-searchbar>
+      </ion-item>
+    </ion-list> -->
+
+    <ion-list class="locationform" no-lines [formGroup]="locationForm">
+      <ion-item class="mb-2">
+        <ion-icon name="location-outline" class="pick-icon"></ion-icon>
+        <ion-searchbar fill="outline" placeholder="pickup location" formControlName="pickupLocation"
+          (input)="filteredLocations($event)" (ionFocus)="onFocus('Pickup location')" #pickupInput></ion-searchbar>
+
+        <!-- <ion-input fill="outline" placeholder="pickup location" [(ngModel)]="pickupLocation"
+                (input)="filteredLocations($event)" (ionFocus)="onFocus('Pickup location')" #pickupInput></ion-input> -->
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="location-outline" class="drop-icon"></ion-icon>
+        <ion-searchbar fill="outline" placeholder="drop location" formControlName="dropLocation"
+          (input)="filteredLocations($event)" (ionFocus)="onFocus('Drop location')" #dropInput></ion-searchbar>
+
+        <!-- <ion-input fill="outline" placeholder="drop location" [(ngModel)]="dropLocation"
+                (input)="filteredLocations($event)" (ionFocus)="onFocus('Drop location')" #dropInput></ion-input> -->
+      </ion-item>
+      <ion-item>
+
+      </ion-item>
+    </ion-list>
+    <div class="locationlist">
+      <ion-list>
+        <ion-item *ngFor="let data of filterData | slice:0:3">
+          <ion-icon name="location-outline" class="ion-padding-left"></ion-icon>
+          <ion-label (click)="selectLocation(data)">{{data.location}}</ion-label>
+          <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="image">
+      <ion-img src="https://voluble-crisp-805982.netlify.app/assets/imgs/trip.svg" alt="trip image"></ion-img>
+    </div>
+  </div>
+
+</ion-content>

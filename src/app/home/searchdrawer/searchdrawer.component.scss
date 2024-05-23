@@ -1,0 +1,17 @@
+.drawer {
+  position: absolute;
+  border-radius: 20px solid;
+  width: 100%;
+  bottom: calc(-20vh + env(safe-area-inset-bottom));
+  height: 50vh;
+  background-color: aliceblue;
+  z-index: 11;
+}
+
+.drawer-pull {
+  background: #cccccc;
+  height: 4px;
+  width: 60px;
+  border-radius: 2px;
+  cursor: pointer;
+}
